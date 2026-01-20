@@ -119,7 +119,7 @@ const _validateSchema = async (validatorType: string, fixtures: object, data: an
     // Default values (when validation is disabled)
     let validationResult: ValidationResult = { errors: null, dataMismatches: data }
 
-    if (process.env.DISABLE_SCHEMA_VALIDATION === 'true') {
+    if (process.env.DISABLE_SCHEMA_VALIDATION === 'true' && process.env.DISABLE_NON_ERRORS_LOG !== 'true') {
         // Schema validation disabled
         console.log(`${warningDisableSchemaValidation} - ${msgDisableSchemaValidation}`)
     } else {
@@ -138,7 +138,9 @@ const _validateSchema = async (validatorType: string, fixtures: object, data: an
         if (!errors) {
             // Schema validation passed
             await test.step(`${passResponseBodyAgainstSchema}`, async () => {
-                console.log(passResponseBodyAgainstSchema)
+                if (process.env.DISABLE_NON_ERRORS_LOG !== 'true') {
+                    console.log(passResponseBodyAgainstSchema)
+                }
             })
             expect(errors).toBeNull()
         } else {
