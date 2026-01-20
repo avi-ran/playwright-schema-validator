@@ -34,6 +34,7 @@ Playwright plugin for API schema validation. It leverages the `core-ajv-schema-v
 
 ✔️ Environment variables:
   -  `DISABLE_SCHEMA_VALIDATION` to disable schema validation in your tests even when function `validateSchema()` is present.
+  -  `DISABLE_NON_ERRORS_LOG` to disable success and warn logs in your tests.
   -  `LOG_API_UI` to enable the display of API call details in **Playwright UI** and **Trace Viewer** .
   -  `LOG_API_REPORT` to enable the display of API call details in **HTML Report** .
 
@@ -624,6 +625,8 @@ test.describe('Petstore API', () => {
 
 - To **disable schema validation** completely even when the `validateSchema()` function is present in the test, set the environment variable `DISABLE_SCHEMA_VALIDATION` to `true`. By default, schema validation is enabled.
 
+- The CLI outputs success and warning logs by default. To reduce verbosity, set the environment variable DISABLE_NON_ERRORS_LOG to true, which disables non-error logs.
+
 - When the environment variable **`LOG_API_UI`** is set to **`"false"`**, the results of the schema validation are NOT displayed in the **Playwright UI** and **Trace Viewer** in a user-friendly format. By default, these results are shown.
 
 > This environment variable `LOG_API_UI` is also shared with the Playwright `pw-api-plugin`.
@@ -638,6 +641,7 @@ In PowerShell (Note: by default LOG_API_UI is already `"true"`):
 
 ```shell
 $env:DISABLE_SCHEMA_VALIDATION="true"
+$env:DISABLE_NON_ERRORS_LOG="true"
 $env:LOG_API_UI="true"
 $env:LOG_API_REPORT="true"
 npx playwright test --ui
@@ -646,13 +650,14 @@ npx playwright test --ui
 In Bash:
 
 ```shell
-DISABLE_SCHEMA_VALIDATION="true" LOG_API_UI="true" LOG_API_REPORT="true" npx playwright test --ui
+DISABLE_SCHEMA_VALIDATION="true" DISABLE_NON_ERRORS_LOG="true" LOG_API_UI="true" LOG_API_REPORT="true" npx playwright test --ui
 ```
 
 In Batch
 
 ```shell
 set DISABLE_SCHEMA_VALIDATION="true"
+set DISABLE_NON_ERRORS_LOG="true"
 set LOG_API_UI="true"
 set LOG_API_REPORT="true"
 npx playwright test --ui
