@@ -17,12 +17,12 @@ test.describe('Suite Zod Schema', async () => {
         expect(mockDataPass.length).toBe(3)
     });
 
-    test('Test Zod Schema - Schema Simple - Fail default Style', async ({ page }) => {
+    test.fail('Test Zod Schema - Schema Simple - Fail default Style', async ({ page }) => {
         await validateSchemaZod({ page }, mockDataFail, schema);
         expect(mockDataFail.length).toBe(3)
     });
 
-    test('Test Zod Schema - Schema Simple - Fail custom Style', async ({ page }) => {
+    test.fail('Test Zod Schema - Schema Simple - Fail custom Style', async ({ page }) => {
         const customStyleErrors = { iconPropertyError: '⛔', iconPropertyMissing: '❓' }
         await validateSchemaZod({ page }, mockDataFail, schema, customStyleErrors);
         expect(mockDataFail.length).toBe(3)

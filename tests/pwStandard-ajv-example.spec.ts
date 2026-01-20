@@ -35,7 +35,7 @@ test.describe('Petstore API', () => {
         await validateSchema({ page }, responseBodyPost1, petStoreSwaggerErrors, { endpoint: '/store/order', method: 'post', status: 200 });
     });
 
-    test('Should validate schema of POST "/store/order" endpoint - FAIL', async ({ request, page }) => {
+    test.fail('Should validate schema of POST "/store/order" endpoint - FAIL', async ({ request, page }) => {
 
         // POST 2 (FAIL: "status" not a valid value & "shipDate" is missing)
         const requestBody2 = {
@@ -59,7 +59,7 @@ test.describe('Petstore API', () => {
         await validateSchema({ page }, responseBodyPost2, petStoreSwaggerErrors, { endpoint: '/store/order', method: 'post', status: 200 });
     })
 
-    test('Should validate schema of POST "/store/order" endpoint with custom Styles override - FAIL', async ({ request, page }) => {
+    test.fail('Should validate schema of POST "/store/order" endpoint with custom Styles override - FAIL', async ({ request, page }) => {
         const issuesStyles = {
             iconPropertyError: '🟦',
             colorPropertyError: '#5178eb',

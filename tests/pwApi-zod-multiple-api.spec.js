@@ -16,7 +16,7 @@ test.describe('Suite Zod Schema Petstore', async () => {
 
     const baseUrl = 'https://petstore.swagger.io/v2';
 
-    test('should validate the OpenAPI schema for GET findByStatus "pending"', async ({ request, page }) => {
+    test.fail('should validate the OpenAPI schema for GET findByStatus "pending"', async ({ request, page }) => {
         const findByStatusReq = await pwApi.get(
             { request, page }, `${baseUrl}/pet/findByStatus?status=pending`,
             { headers: { 'Content-Type': 'application/json' }}
@@ -28,7 +28,7 @@ test.describe('Suite Zod Schema Petstore', async () => {
         
     });
 
-    test('should validate the OpenAPI schema for GET findByStatus "available" Custom Issues Style', async ({ request, page }) => {
+    test.fail('should validate the OpenAPI schema for GET findByStatus "available" Custom Issues Style', async ({ request, page }) => {
         const findByStatusReq = await pwApi.get(
             { request, page }, `${baseUrl}/pet/findByStatus?status=available`,
             { headers: { 'Content-Type': 'application/json' }}

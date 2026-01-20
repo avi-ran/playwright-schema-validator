@@ -36,7 +36,7 @@ test.describe('Petstore API', () => {
 
     });
 
-    test('Should validate schema of POST "/store/order" endpoint - FAIL', async ({ request, page }) => {
+    test.fail('Should validate schema of POST "/store/order" endpoint - FAIL', async ({ request, page }) => {
         // POST 2 (FAIL: "status" not a valid value & "shipDate" is missing)
         const requestBody2 = {
             "id": 0,
